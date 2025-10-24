@@ -1,0 +1,105 @@
+# Configuration Decap CMS pour Studio OP
+
+backend:
+  name: git-gateway
+  branch: main # Branche à utiliser pour les commits
+
+# Configuration optionnelle pour le développement local
+# Décommentez pour tester localement
+# local_backend: true
+
+# Configuration des médias
+media_folder: "asset/uploads" # Dossier où seront stockées les images uploadées
+public_folder: "/asset/uploads" # Chemin public pour accéder aux images
+
+# Langue de l'interface
+locale: 'fr'
+
+# Collections
+collections:
+  # Collection Projets
+  - name: "projects" # Identifiant utilisé dans les routes
+    label: "Projets" # Nom affiché dans l'interface CMS
+    folder: "content/projects" # Dossier où seront stockés les fichiers markdown
+    create: true # Permet de créer de nouveaux projets
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Format du nom de fichier
+    editor:
+      preview: true # Active la prévisualisation
+    fields: # Champs du formulaire
+      - {label: "Titre", name: "title", widget: "string", required: true}
+      - {label: "Description", name: "description", widget: "text", required: true}
+      - {label: "Image", name: "image", widget: "image", required: true, media_folder: "/asset/uploads/projects"}
+      - label: "Catégorie"
+        name: "category"
+        widget: "select"
+        options: 
+          - {label: "Branding", value: "branding"}
+          - {label: "Web Design", value: "web"}
+          - {label: "Illustration", value: "illustration"}
+          - {label: "Packaging", value: "packaging"}
+          - {label: "Print", value: "print"}
+        required: true
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: true
+        field: {label: "Tag", name: "tag", widget: "string"}
+      - {label: "Date de publication", name: "date", widget: "datetime", required: true}
+      - {label: "Client", name: "client", widget: "string", required: false}
+      - {label: "Année", name: "year", widget: "string", required: false}
+      - {label: "URL du projet", name: "project_url", widget: "string", required: false}
+      - {label: "Galerie d'images", name: "gallery", widget: "list", required: false, field: {label: "Image", name: "image", widget: "image"}}
+      - {label: "Publié", name: "published", widget: "boolean", default: true}
+      - {label: "Ordre", name: "order", widget: "number", default: 0, value_type: "int", required: false, hint: "Plus le nombre est petit, plus le projet apparaît en premier"}
+
+  # Collection Témoignages (pour l'intégration Google Reviews future)
+  - name: "testimonials"
+    label: "Témoignages"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - {label: "Nom du client", name: "author", widget: "string", required: true}
+      - {label: "Entreprise/Rôle", name: "role", widget: "string", required: true}
+      - {label: "Témoignage", name: "text", widget: "text", required: true}
+      - label: "Note"
+        name: "rating"
+        widget: "select"
+        options: ["1", "2", "3", "4", "5"]
+        default: "5"
+      - {label: "Photo", name: "photo", widget: "image", required: false}
+      - {label: "Date", name: "date", widget: "datetime", required: true}
+      - {label: "Publié", name: "published", widget: "boolean", default: true}
+      - {label: "Source", name: "source", widget: "string", default: "Manuel", required: false, hint: "Ex: Google Reviews, Direct, etc."}
+
+  # Configuration du site (optionnel mais utile)
+  - name: "settings"
+    label: "Paramètres du site"
+    files:
+      - label: "Informations générales"
+        name: "general"
+        file: "content/settings/general.json"
+        fields:
+          - {label: "Nom du site", name: "site_name", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Email de contact", name: "contact_email", widget: "string"}
+          - {label: "Téléphone", name: "phone", widget: "string", required: false}
+          - label: "Réseaux sociaux"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "Instagram", name: "instagram", widget: "string", required: false}
+              - {label: "Behance", name: "behance", widget: "string", required: false}
+              - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+              - {label: "Facebook", name: "facebook", widget: "string", required: false}
+          - label: "Google My Business"
+            name: "google_business"
+            widget: "object"
+            fields:
+              - {label: "ID de l'entreprise", name: "business_id", widget: "string", required: false, hint: "Pour afficher les avis Google automatiquement"}
+              - {label: "API Key", name: "api_key", widget: "string", required: false, hint: "Clé API Google My Business"}
+
+
+

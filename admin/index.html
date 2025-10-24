@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager - Studio OP</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+    <!-- Include the script that builds the page and powers Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
+    <script>
+        // Configuration optionnelle pour les prévisualisations personnalisées
+        CMS.registerPreviewStyle("/styles.css");
+        
+        // Preview Template pour les projets
+        const ProjectPreview = createClass({
+            render: function() {
+                const entry = this.props.entry;
+                const image = entry.getIn(['data', 'image']);
+                const title = entry.getIn(['data', 'title']);
+                const description = entry.getIn(['data', 'description']);
+                const category = entry.getIn(['data', 'category']);
+                const tags = entry.getIn(['data', 'tags']);
+                
+                return h('div', {className: 'project-item'},
+                    h('div', {className: 'project-image'},
+                        h('img', {src: image}),
+                        h('div', {className: 'project-overlay'},
+                            h('div', {className: 'project-info'},
+                                h('h3', {}, title),
+                                h('p', {}, description),
+                                h('div', {className: 'project-tags'},
+                                    tags && tags.map((tag, index) =>
+                                        h('span', {key: index, className: 'tag'}, tag)
+                                    )
+                                )
+                            )
+                        )
+                    )
+                );
+            }
+        });
+        
+        CMS.registerPreviewTemplate('projects', ProjectPreview);
+    </script>
+</body>
+</html>
+
+
+

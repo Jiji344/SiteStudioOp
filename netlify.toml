@@ -1,0 +1,43 @@
+# Configuration Netlify pour Studio OP
+
+[build]
+  publish = "."
+  command = "echo 'No build command needed'"
+
+# Configuration Git Gateway pour Decap CMS
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirections pour le CMS
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+# Headers de sécurité
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
+
+# Configuration pour les fichiers statiques
+[[headers]]
+  for = "/asset/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Configuration Identity pour l'authentification
+[context.production]
+  environment = { HUGO_VERSION = "0.119.0" }
+
+# Configuration pour le développement local
+[dev]
+  command = "python -m http.server 8888"
+  port = 8888
+  publish = "."
+
+
+
