@@ -1,20 +1,79 @@
 // ========================================
-// Menu Mobile Toggle
+// Menu Mobile Toggle - RÉÉCRIT COMPLÈTEMENT
 // ========================================
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.nav');
+let nav = null;
 
-menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-    menuToggle.classList.toggle('active');
-});
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    nav = document.querySelector('.nav');
+    let overlay = null;
 
-// Fermer le menu lors du clic sur un lien
-const navLinks = document.querySelectorAll('.nav a');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    if (!menuToggle || !nav) {
+        console.log('Menu elements not found');
+        return;
+    }
+
+    function openMenu() {
+        nav.classList.add('active');
+        menuToggle.classList.add('active');
+        
+        // Créer overlay
+        const header = document.querySelector('.header');
+        const headerRect = header.getBoundingClientRect();
+        overlay = document.createElement('div');
+        overlay.className = 'nav-overlay';
+        overlay.style.cssText = `position: fixed; top: ${headerRect.bottom}px; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 4400; pointer-events: auto;`;
+        document.body.appendChild(overlay);
+        
+        // Fermer au clic sur overlay
+        overlay.addEventListener('click', closeMenu);
+    }
+
+    function closeMenu() {
+        // Supprimer overlay immédiatement
+        if (overlay && overlay.parentNode) {
+            document.body.removeChild(overlay);
+            overlay = null;
+        }
+        
         nav.classList.remove('active');
         menuToggle.classList.remove('active');
+    }
+
+    // Bouton burger
+    menuToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (nav.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    // Fermer au clic sur liens avec délai
+    const navLinks = document.querySelectorAll('.nav a');
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeMenu();
+            
+            // Réinitialiser le défilement des avis
+            isPaused = false;
+            
+            // Attendre que le menu se ferme puis scroller
+            setTimeout(function() {
+                const href = link.getAttribute('href');
+                const target = document.querySelector(href);
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 200);
+        });
     });
 });
 
@@ -37,24 +96,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ========================================
-// Header Scroll Effect
+// Header Scroll Effect - SUPPRIMÉ
 // ========================================
-const header = document.querySelector('.header');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        header.style.boxShadow = '0 8px 40px rgba(0, 0, 0, 0.12)';
-        header.style.background = 'rgba(255, 255, 255, 0.6)';
-    } else {
-        header.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.08)';
-        header.style.background = 'rgba(255, 255, 255, 0.4)';
-    }
-    
-    lastScroll = currentScroll;
-});
 
 // ========================================
 // Animations au scroll - Fade In
@@ -101,6 +144,7 @@ serviceItems.forEach(item => {
 // Scroll infini des témoignages
 // ========================================
 const testimonialsTrack = document.getElementById('testimonials-track');
+let isPaused = false;
 
 if (testimonialsTrack) {
     // Dupliquer le contenu pour l'effet de boucle infinie
@@ -116,7 +160,6 @@ if (testimonialsTrack) {
     
     let scrollPosition = 0;
     let animationId;
-    let isPaused = false;
     
     // Fonction d'animation fluide
     function scrollTestimonials() {
@@ -149,6 +192,15 @@ if (testimonialsTrack) {
     
     testimonialsTrack.addEventListener('mouseleave', () => {
         isPaused = false;
+    });
+    
+    // Réinitialiser isPaused quand le menu se ferme
+    document.addEventListener('click', function() {
+        setTimeout(function() {
+            if (!nav || !nav.classList.contains('active')) {
+                isPaused = false;
+            }
+        }, 100);
     });
 }
 
