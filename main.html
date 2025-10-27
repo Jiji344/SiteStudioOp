@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Graphiste Créative</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+        // Vérifier si l'utilisateur a déjà passé le loader
+        if (!sessionStorage.getItem('loaderPassed')) {
+            // Rediriger vers le loader
+            window.location.href = 'loader.html';
+        }
+        
+        // Fonction pour réinitialiser le loader (utile pour les tests)
+        function resetLoader() {
+            sessionStorage.removeItem('loaderPassed');
+            window.location.href = 'loader.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#hero">
+                    <img src="asset/Logo.png" alt="Studio OP Logo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#hero">Accueil</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#projects">Projets</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Vos avis</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section Héros -->
+    <section id="hero" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Votre identité visuelle, ma passion</h1>
+            <p class="hero-subtitle">Créations graphiques sur mesure pour donner vie à vos projets</p>
+            <a href="#projects" class="btn-hero">Découvrez mes créations</a>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=600&fit=crop" alt="Photo de la graphiste">
+                    <div class="image-decoration"></div>
+                </div>
+                <div class="about-text fade-in">
+                    <h2>À propos</h2>
+                    <div class="section-decoration"></div>
+                    <p class="intro-text">Passionnée par le design et l'art visuel depuis plus de 10 ans</p>
+                    <p>Je suis une graphiste freelance spécialisée dans la création d'identités visuelles uniques et mémorables. Mon approche combine esthétique contemporaine et stratégie de marque pour créer des designs qui racontent une histoire.</p>
+                    <p>Mon parcours m'a permis de travailler avec des clients variés, des startups innovantes aux entreprises établies, en passant par des artistes indépendants. Chaque projet est pour moi une opportunité de transformer une vision en réalité visuelle.</p>
+                    <p>Ce qui me distingue ? Une attention méticuleuse aux détails, une écoute active de mes clients et une volonté constante d'innovation dans mes créations.</p>
+                    <div class="skills-icons">
+                        <div class="skill-icon">
+                            <svg height="60" viewBox="0 0 176 176" width="60" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <g>
+                                        <g>
+                                            <rect fill="#002732" height="176" rx="40.66" width="176"></rect>
+                                            <path d="m135.34 5a35.7 35.7 0 0 1 35.66 35.66v94.68a35.7 35.7 0 0 1 -35.66 35.66h-94.68a35.7 35.7 0 0 1 -35.66-35.66v-94.68a35.7 35.7 0 0 1 35.66-35.66zm0-5h-94.68a40.65 40.65 0 0 0 -40.66 40.66v94.68a40.65 40.65 0 0 0 40.66 40.66h94.68a40.65 40.65 0 0 0 40.66-40.66v-94.68a40.65 40.65 0 0 0 -40.66-40.66z" fill="#00d4ff"></path>
+                                        </g>
+                                        <g fill="#00d4ff">
+                                            <path d="m58.93 119.61h-10a2.59 2.59 0 0 1 -2.71-2.61v-58.7a2.55 2.55 0 0 1 2.63-2.63c4.53-.12 10.39-.18 17.37-.18 8.78 0 15.37 2.07 19.61 6.14a20.34 20.34 0 0 1 6.42 15.21c0 7.45-2.71 13.09-8.07 16.77-5.11 3.52-11.58 5.3-19.22 5.3h-3.31v18a2.63 2.63 0 0 1 -2.72 2.7zm-8.71-4h7.43v-20.7h7.35c6.81 0 12.52-1.55 17-4.6 4.26-2.93 6.33-7.33 6.33-13.47a16.29 16.29 0 0 0 -5.19-12.33c-3.47-3.33-9.13-5-16.84-5-6.29 0-11.66 0-16 .15zm-1.22-55.94h-.1s.03 0 .1 0zm16.5 30.78a48.28 48.28 0 0 1 -6.13-.2l-1.72-.25v-25.87h3.13 2.36s2 0 3.08 0c4.62 0 8.26 1.14 10.81 3.38s4 5.57 4 9.69c0 4.69-1.54 8.16-4.58 10.32a18.52 18.52 0 0 1 -10.95 2.93zm-3.85-4h3.85a14.63 14.63 0 0 0 8.61-2.29c1.94-1.38 2.89-3.69 2.89-7 0-3-.85-5.15-2.6-6.69s-4.56-2.47-8.18-2.47c-1 0-2 0-3 0-.6 0-1.14 0-1.61 0z"></path>
+                                            <path d="m110.59 120.51c-5.55 0-10.2-1-13.82-3.07a2.83 2.83 0 0 1 -1.68-2.71v-8.37a2.49 2.49 0 0 1 1.2-2.21 2.3 2.3 0 0 1 2.69.2 18.51 18.51 0 0 0 11.25 3.88 6.87 6.87 0 0 0 3.69-.78 1.43 1.43 0 0 0 .79-1.27 2.29 2.29 0 0 0 -.74-1.76c-.4-.38-1.52-1.2-4.64-2.4-5.15-2-8.69-4.13-10.81-6.53a13.64 13.64 0 0 1 -3.34-9.38 14 14 0 0 1 4.9-10.85c3.18-2.85 7.69-4.29 13.39-4.29 5.22 0 9.19.72 12.14 2.19l.14.07a3.14 3.14 0 0 1 1.42 2.89v7.47a2.55 2.55 0 0 1 -1.28 2.41 2.45 2.45 0 0 1 -2.61-.23 17.71 17.71 0 0 0 -9.45-2.77 5.91 5.91 0 0 0 -3.4.74 1.48 1.48 0 0 0 -.72 1.22 1.86 1.86 0 0 0 .65 1.4c.36.35 1.45 1.13 4.66 2.41 5.29 2 9 4.19 11.2 6.56a13.53 13.53 0 0 1 3.56 9.61 14 14 0 0 1 -5.38 11.41c-3.4 2.75-8.09 4.16-13.81 4.16zm-11.5-6.36a24.67 24.67 0 0 0 11.5 2.36c4.79 0 8.59-1.11 11.3-3.29a10 10 0 0 0 3.89-8.3 9.5 9.5 0 0 0 -2.47-6.86c-1.79-1.9-5.07-3.78-9.75-5.58-3-1.22-4.93-2.25-6-3.26a5.88 5.88 0 0 1 -1.87-4.28 5.42 5.42 0 0 1 2.31-4.36 9.19 9.19 0 0 1 5.87-1.6 21.16 21.16 0 0 1 9.34 2.2v-4.74a25.77 25.77 0 0 0 -9.7-1.47c-4.69 0-8.3 1.1-10.73 3.27a10 10 0 0 0 -3.56 7.87 9.68 9.68 0 0 0 2.33 6.73c1.67 1.88 4.78 3.71 9.26 5.45a18.23 18.23 0 0 1 6 3.26 6.31 6.31 0 0 1 2 4.63 5.36 5.36 0 0 1 -2.55 4.58 10.35 10.35 0 0 1 -5.93 1.47 22 22 0 0 1 -11.14-3z"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="skill-icon">
+                            <svg height="60" viewBox="0 0 176 176" width="60" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <g>
+                                        <g>
+                                            <rect fill="#36261a" height="176" rx="40.66" width="176"></rect>
+                                            <path d="m135.34 5a35.7 35.7 0 0 1 35.66 35.66v94.68a35.7 35.7 0 0 1 -35.66 35.66h-94.68a35.7 35.7 0 0 1 -35.66-35.66v-94.68a35.7 35.7 0 0 1 35.66-35.66zm0-5h-94.68a40.65 40.65 0 0 0 -40.66 40.66v94.68a40.65 40.65 0 0 0 40.66 40.66h94.68a40.65 40.65 0 0 0 40.66-40.66v-94.68a40.65 40.65 0 0 0 -40.66-40.66z" fill="#ff7f18"></path>
+                                        </g>
+                                        <g fill="#ff7f18">
+                                            <path d="m78.69 67.08h-3.09l-.36 1.54c-.7 3-3.35 11.5-7.87 25.3l-.86 2.63h21.61l-.73-2.55c-.25-.88-1.48-4.66-3.76-11.55-2.23-6.75-3.72-11.45-4.43-13.92zm4 25.47h-10.69c2.35-7.12 4.1-12.62 5.31-16.55.7 2.17 1.54 4.76 2.52 7.74 1.45 4.33 2.35 7.09 2.91 8.81z"></path>
+                                            <path d="m86.36 59.58-.17-.36a2.8 2.8 0 0 0 -2.43-1.41h-13a2.47 2.47 0 0 0 -2.63 2.44 13.22 13.22 0 0 1 -.63 4.29l-18.78 53.73a2.66 2.66 0 0 0 .34 2.45 2.63 2.63 0 0 0 2.21 1h9.45a2.79 2.79 0 0 0 2.93-2.24l4.72-14.23h18l5 14.49v.13a2.92 2.92 0 0 0 2.74 1.85h10.62a2.53 2.53 0 0 0 2.15-1 2.6 2.6 0 0 0 .27-2.46zm8.58 58.17-5.71-16.47h-23.75l-5.48 16.47h-6.86l18.08-51.62a14.18 14.18 0 0 0 .85-4.32h10.84l19.9 55.94z"></path>
+                                            <path d="m119.4 70.45a7.91 7.91 0 0 0 5.82-2.21 7.91 7.91 0 0 0 2.21-5.82 8.12 8.12 0 0 0 -2.17-5.79 7.62 7.62 0 0 0 -5.77-2.33 8.08 8.08 0 1 0 -.09 16.15zm-2.91-11a4 4 0 0 1 3-1.12 3.67 3.67 0 0 1 2.86 1.08 4.16 4.16 0 0 1 1.08 3 4 4 0 1 1 -6.94-3z"></path>
+                                            <path d="m124.35 73.92h-10a2.63 2.63 0 0 0 -2.72 2.72v42.3a2.69 2.69 0 0 0 2.81 2.81h9.9a2.64 2.64 0 0 0 2.72-2.72v-42.39a2.63 2.63 0 0 0 -2.71-2.72zm-1.28 43.83h-7.43v-39.83h7.43z"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="skill-icon">
+                            <svg height="60" viewBox="0 0 176 176" width="60" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <g>
+                                        <g>
+                                            <rect fill="#2f0014" height="176" rx="40.66" width="176"></rect>
+                                            <path d="m135.34 5a35.7 35.7 0 0 1 35.66 35.66v94.68a35.7 35.7 0 0 1 -35.66 35.66h-94.68a35.7 35.7 0 0 1 -35.66-35.66v-94.68a35.7 35.7 0 0 1 35.66-35.66zm0-5h-94.68a40.65 40.65 0 0 0 -40.66 40.66v94.68a40.65 40.65 0 0 0 40.66 40.66h94.68a40.65 40.65 0 0 0 40.66-40.66v-94.68a40.65 40.65 0 0 0 -40.66-40.66z" fill="#fc3f93"></path>
+                                        </g>
+                                        <g fill="#fc3f93">
+                                            <path d="m67 122h-9.9a2.69 2.69 0 0 1 -2.81-2.81v-58.42a2.64 2.64 0 0 1 2.81-2.71h9.9a2.62 2.62 0 0 1 2.72 2.71v58.42a2.65 2.65 0 0 1 -2.72 2.81zm-8.71-4h7.41v-55.94h-7.43z"></path>
+                                            <path d="m101.09 122.9c-7.44 0-13.54-2.1-18.12-6.23s-7-10.34-7-18.27a23.93 23.93 0 0 1 7.41-18c4.89-4.7 11.49-7.08 19.61-7.08a28.13 28.13 0 0 1 3 .14v-17.72a2.54 2.54 0 0 1 2.63-2.63h10.26a2.45 2.45 0 0 1 2.54 2.54v54.27c0 1 .09 3 .26 5.94a2.63 2.63 0 0 1 -1.78 2.84 43.2 43.2 0 0 1 -18.81 4.2zm1.91-45.54c-7 0-12.72 2-16.84 6a19.85 19.85 0 0 0 -6.16 15.04c0 6.85 1.86 11.85 5.68 15.29s9 5.21 15.45 5.21a39.26 39.26 0 0 0 16.59-3.56c-.16-2.67-.23-4.45-.23-5.42v-52.81h-7.49v21.44l-2.55-.73a17.11 17.11 0 0 0 -4.45-.46zm-.63 37.16a14.3 14.3 0 0 1 -10.51-4.18c-2.77-2.78-4.18-7-4.18-12.39 0-5.19 1.39-9.3 4.14-12.22a14.45 14.45 0 0 1 11-4.46 13.45 13.45 0 0 1 6.11 1.21l1.07.52v29.74l-1.11.55a14.66 14.66 0 0 1 -6.54 1.23zm.45-29.25a10.47 10.47 0 0 0 -8.08 3.2c-2 2.16-3.06 5.34-3.06 9.48 0 4.34 1 7.56 3 9.56a10.31 10.31 0 0 0 7.68 3 15 15 0 0 0 3.67-.37v-24.5a12.51 12.51 0 0 0 -3.23-.37z"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="skill-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="65" width="65" viewBox="0 0 64 64">
+                                <path fill="#161616" fill-rule="evenodd" d="m60,12c0-4.42-3.58-8-8-8H12c-4.42,0-8,3.58-8,8v40c0,4.42,3.58,8,8,8h40c4.42,0,8-3.58,8-8V12h0Z"></path>
+                                <path fill="#0cc2ff" fill-rule="evenodd" d="m39.01,25.01c3.87,0,7.01,3.14,7.01,7.01s-3.14,7.01-7.01,7.01-7.01-3.14-7.01-7.01,3.14-7.01,7.01-7.01h0Z"></path>
+                                <path fill="#ff7568" fill-rule="evenodd" d="m46,18c0-3.87-3.13-7-7-7h-14.02c-3.87,0-7,3.13-7,7s3.13,7,7,7h14.02c3.87,0,7-3.13,7-7h0Z"></path>
+                                <path fill="#af5bff" fill-rule="evenodd" d="m31.99,25.01h-7.01c-1.86,0-3.64.74-4.95,2.05-1.31,1.31-2.05,3.09-2.05,4.95s.74,3.64,2.05,4.95c1.31,1.31,3.09,2.05,4.95,2.05h7.01v-14h0Z"></path>
+                                <path fill="#ff4611" fill-rule="evenodd" d="m31.99,11h-7.01c-1.86,0-3.64.74-4.95,2.05-1.31,1.31-2.05,3.09-2.05,4.95s.74,3.64,2.05,4.95c1.31,1.31,3.09,2.05,4.95,2.05h7.01v-14h0Z"></path>
+                                <path fill="#00e681" fill-rule="evenodd" d="m32,38.99h-7.01c-1.86,0-3.64.74-4.95,2.05-1.31,1.31-2.05,3.09-2.05,4.95s.74,3.64,2.05,4.95c1.31,1.31,3.09,2.05,4.95,2.05h0c1.86,0,3.64-.74,4.95-2.05,1.31-1.31,2.05-3.09,2.05-4.95v-7h0Z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Projets -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Mes Projets</h2>
+                <div class="section-decoration"></div>
+                <p>Une sélection de mes réalisations récentes</p>
+            </div>
+            <div class="projects-grid" id="projects-container">
+                <!-- Les projets seront chargés dynamiquement depuis Decap CMS -->
+                <!-- Exemples par défaut -->
+                <div class="project-item" data-category="branding">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop" alt="Projet Branding">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3>Identité Visuelle Élégante</h3>
+                                <p>Création d'une identité de marque complète pour une boutique de luxe</p>
+                                <div class="project-tags">
+                                    <span class="tag"><i class="fas fa-palette"></i> Branding</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item" data-category="web">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" alt="Projet Web Design">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3>Site Web Moderne</h3>
+                                <p>Design d'interface pour une plateforme de services créatifs</p>
+                                <div class="project-tags">
+                                    <span class="tag"><i class="fas fa-laptop-code"></i> Web Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item" data-category="illustration">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=600&fit=crop" alt="Projet Illustration">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3>Illustrations Personnalisées</h3>
+                                <p>Série d'illustrations pour une campagne marketing innovante</p>
+                                <div class="project-tags">
+                                    <span class="tag"><i class="fas fa-pencil-alt"></i> Illustration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item" data-category="branding">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=800&h=600&fit=crop" alt="Projet Package Design">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3>Design de Packaging</h3>
+                                <p>Conception d'emballages élégants pour produits artisanaux</p>
+                                <div class="project-tags">
+                                    <span class="tag"><i class="fas fa-box"></i> Packaging</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Mes Services</h2>
+                <div class="section-decoration"></div>
+                <p>Des solutions créatives adaptées à vos besoins</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-item slide-up">
+                    <div class="service-icon">
+                        <svg height="40" viewBox="0 0 480 480" width="40" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                            <path d="m472 0h-464c-4.417969 0-8 3.582031-8 8v384c0 4.417969 3.582031 8 8 8h200v16h-88c-4.417969 0-8 3.582031-8 8v48c0 4.417969 3.582031 8 8 8h240c4.417969 0 8-3.582031 8-8v-48c0-4.417969-3.582031-8-8-8h-88v-16h200c4.417969 0 8-3.582031 8-8v-384c0-4.417969-3.582031-8-8-8zm-120 432v32h-224v-32zm-128-16v-16h32v16zm240-32h-448v-368h448zm0 0"></path>
+                            <path d="m40 368h400c4.417969 0 8-3.582031 8-8v-320c0-4.417969-3.582031-8-8-8h-400c-4.417969 0-8 3.582031-8 8v320c0 4.417969 3.582031 8 8 8zm8-320h384v304h-384zm0 0"></path>
+                            <path d="m240 160c-22.089844 0-40 17.910156-40 40s17.910156 40 40 40 40-17.910156 40-40c-.027344-22.082031-17.917969-39.972656-40-40zm0 64c-13.253906 0-24-10.746094-24-24s10.746094-24 24-24 24 10.746094 24 24-10.746094 24-24 24zm0 0"></path>
+                            <path d="m80 80h32v-16h-48v48h16zm0 0"></path>
+                            <path d="m400 320h-32v16h48v-48h-16zm0 0"></path>
+                            <path d="m280.320312 132.367188c-13.25-2.867188-26.765624-4.332032-40.320312-4.367188-57.027344.917969-111.21875 25.035156-150.070312 66.792969-2.6875 3.128906-2.550782 7.789062.308593 10.757812 29.238281 28.53125 65.132813 49.316407 104.433594 60.464844l-21.984375 21.984375h-108.6875v16h115.3125l34.183594-34.183594c8.765625 1.40625 17.625 2.136719 26.503906 2.183594 84.710938 0 147.144531-63.734375 149.761719-66.449219 2.859375-2.96875 2.996093-7.628906.308593-10.757812-25.117187-26.828125-56.726562-46.726563-91.773437-57.777344l57.015625-57.015625h60.6875v-16h-67.3125zm-172.945312 67.359374c22.335938-21.394531 49.1875-37.5 78.578125-47.132812-23.496094 26.597656-23.988281 66.386719-1.152344 93.558594-28.507812-10.453125-54.777343-26.203125-77.425781-46.425782zm132.625 56.273438c-30.929688 0-56-25.070312-56-56s25.070312-56 56-56 56 25.070312 56 56c-.035156 30.914062-25.085938 55.964844-56 56zm132.640625-56.265625c-22.636719 20.253906-48.917969 36.019531-77.441406 46.457031 22.867187-27.167968 22.394531-66.984375-1.109375-93.597656 29.378906 9.640625 56.222656 25.75 78.550781 47.140625zm0 0"></path>
+                            <path d="m360 96h48v16h-48zm0 0"></path>
+                            <path d="m360 128h32v16h-32zm0 0"></path>
+                            <path d="m64 320h32v16h-32zm0 0"></path>
+                            <path d="m112 320h16v16h-16zm0 0"></path>
+                            <path d="m144 320h48v16h-48zm0 0"></path>
+                            <path d="m400 256h16v16h-16zm0 0"></path>
+                        </svg>
+                    </div>
+                    <h3>Identité Visuelle</h3>
+                    <p>Création de logos, chartes graphiques et supports de communication pour donner une identité unique à votre marque.</p>
+                    <a href="#contact" class="btn-service">En savoir plus</a>
+                </div>
+                <div class="service-item slide-up">
+                    <div class="service-icon">
+                        <svg height="40" viewBox="0 0 64 64" width="40" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                            <g>
+                                <path d="m59 2h-54a3.009 3.009 0 0 0 -3 3v42a3.009 3.009 0 0 0 3 3h33v7a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5v-52a3.009 3.009 0 0 0 -3-3zm1 55a3.009 3.009 0 0 1 -3 3h-14a3.009 3.009 0 0 1 -3-3v-1h20zm0-3h-20v-22h20zm0-24h-20v-1a3.009 3.009 0 0 1 3-3h14a3.009 3.009 0 0 1 3 3zm0-4.97a4.924 4.924 0 0 0 -3-1.03h-14a5 5 0 0 0 -5 5v19h-33a1 1 0 0 1 -1-1v-35h56zm0-15.03h-56v-5a1 1 0 0 1 1-1h54a1 1 0 0 1 1 1z"></path>
+                                <path d="m8 6h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2z"></path>
+                                <path d="m12 6h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2z"></path>
+                                <path d="m16 6h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2z"></path>
+                                <path d="m35 18h-28a1 1 0 0 0 -1 1v22a1 1 0 0 0 1 1h28a1 1 0 0 0 1-1v-22a1 1 0 0 0 -1-1zm-26.2 22 8.2-13.11 8.2 13.11zm18.75 0-2.18-3.5 2.63-3.76 5.08 7.26zm6.45-2.17-5.18-7.4a1 1 0 0 0 -1.64 0l-2.96 4.23-6.37-10.19a1.048 1.048 0 0 0 -1.7 0l-8.15 13.04v-17.51h26z"></path>
+                                <path d="m25 28a3 3 0 1 0 -3-3 3 3 0 0 0 3 3zm0-4a1 1 0 1 1 -1 1 1 1 0 0 1 1-1z"></path>
+                                <path d="m57 6h-35a1 1 0 0 0 0 2h35a1 1 0 0 0 0-2z"></path>
+                                <path d="m51 57h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"></path>
+                                <path d="m51 27h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"></path>
+                                <path d="m46.707 38.293a1 1 0 0 0 -1.414 0l-4 4a1 1 0 0 0 0 1.414l4 4a1 1 0 0 0 1.414-1.414l-3.293-3.293 3.293-3.293a1 1 0 0 0 0-1.414z"></path>
+                                <path d="m58.707 42.293-4-4a1 1 0 0 0 -1.414 1.414l3.293 3.293-3.293 3.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414z"></path>
+                                <path d="m52.274 35.039a1 1 0 0 0 -1.236.686l-4 14a1 1 0 0 0 .688 1.236.962.962 0 0 0 .274.039 1 1 0 0 0 .961-.725l4-14a1 1 0 0 0 -.687-1.236z"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3>Design Web</h3>
+                    <p>Conception d'interfaces web modernes et intuitives, optimisées pour une expérience utilisateur exceptionnelle.</p>
+                    <a href="#contact" class="btn-service">En savoir plus</a>
+                </div>
+                <div class="service-item slide-up">
+                    <div class="service-icon">
+                        <svg height="40" viewBox="0 0 480.032 480" width="40" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="transform: translateY(-3px)">
+                            <path d="m472 96.015625h-24v16h16v232.457031l-35.351562-25.257812-9.296876 13.023437 44.648438 31.898438v19.878906h-72c-4.417969 0-8 3.582031-8 8v72h-344c-13.253906 0-24-10.746094-24-24s10.746094-24 24-24h16c4.417969 0 8-3.582031 8-8v-52.34375l112-97.097656 106.800781 91.515625c3.035157 2.597656 7.519531 2.5625 10.511719-.089844l54-48-10.625-12-48.800781 43.367188-106.6875-91.421876c-2.992188-2.5625-7.40625-2.5625-10.398438 0l-106.800781 92.550782v-222.480469h272v-16h-272v-40c0-4.417969-3.582031-8-8-8h-16c-22.082031.027344-39.9726562 17.921875-40 40v352c.0273438 22.082031 17.917969 39.972656 40 40h352c2.121094-.003906 4.152344-.847656 5.65625-2.34375l80-80c.667969-.679687 1.210938-1.472656 1.601562-2.34375.109376-.25.175782-.488281.261719-.742187.230469-.671876.371094-1.375.417969-2.082032 0-.167968.09375-.320312.09375-.488281v-288c0-2.125-.847656-4.167969-2.355469-5.667969-1.503906-1.5-3.546875-2.339844-5.675781-2.332031zm-456 8v-16c0-13.253906 10.746094-24 24-24h8v336h-8c-8.65625-.011719-17.082031 2.796875-24 8zm384 348.6875v-52.6875h52.6875zm0 0"></path>
+                            <path d="m224 200.015625c0 26.511719 21.492188 48 48 48s48-21.488281 48-48c0-26.507813-21.492188-48-48-48-26.5.027344-47.972656 21.5-48 48zm80 0c0 17.671875-14.328125 32-32 32s-32-14.328125-32-32 14.328125-32 32-32 32 14.328125 32 32zm0 0"></path>
+                            <path d="m114.882812 337.863281 47.996094-39.996093 10.246094 12.289062-48 40zm0 0"></path>
+                            <path d="m322.34375 354.359375 24-24.003906 11.3125 11.3125-24 24.003906zm0 0"></path>
+                            <path d="m400 352.015625v-21.601563l30.65625-45.980468c.871094-1.3125 1.335938-2.847656 1.34375-4.417969v-240c0-22.089844-17.910156-40-40-40s-40 17.910156-40 40v240c.003906 1.582031.46875 3.125 1.34375 4.441406l30.65625 45.957031v21.601563zm16-80h-16v-176h16zm-48-232c0-13.253906 10.746094-24 24-24s24 10.746094 24 24v8h-48zm0 24h48v16h-48zm0 32h16v176h-16zm6.945312 192h34.109376l-17.054688 25.601563zm0 0"></path>
+                        </svg>
+                    </div>
+                    <h3>Illustration</h3>
+                    <p>Illustrations personnalisées pour vos projets éditoriaux, publicitaires ou numériques avec un style unique.</p>
+                    <a href="#contact" class="btn-service">En savoir plus</a>
+                </div>
+                <div class="service-item slide-up">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 128 128" fill="currentColor">
+                            <g>
+                                <path d="M85.333,28.583a1.749,1.749,0,0,0,1.75-1.75V16.583a1.75,1.75,0,0,0-3.5,0v10.25A1.749,1.749,0,0,0,85.333,28.583Z"></path>
+                                <path d="M115.5,42.35h-9.94V18a1.751,1.751,0,0,0-1.75-1.75H93.08V6.5a1.75,1.75,0,0,0-1.75-1.75H36.67A1.75,1.75,0,0,0,34.92,6.5v9.75H24.19A1.751,1.751,0,0,0,22.44,18V42.35H12.5A7.759,7.759,0,0,0,4.75,50.1V97.81a7.759,7.759,0,0,0,7.75,7.75H34.917V121.5a1.75,1.75,0,0,0,1.75,1.75H91.333a1.75,1.75,0,0,0,1.75-1.75V105.56H115.5a7.759,7.759,0,0,0,7.75-7.75V50.1A7.759,7.759,0,0,0,115.5,42.35Zm-13.44-22.6v22.6H93.08V19.75ZM38.42,8.25H89.58v34.1H38.42ZM25.94,19.75h8.98v22.6H25.94Zm0,82.31V84.25h8.977v17.81Zm12.477,17.69V84.25H89.583s0,19.55,0,19.56,0,15.94,0,15.94Zm54.666-17.69V84.25h8.977v17.81Zm26.667-4.25a4.255,4.255,0,0,1-4.25,4.25h-9.94V82.5a1.751,1.751,0,0,0-1.75-1.75H24.19a1.751,1.751,0,0,0-1.75,1.75v19.56H12.5a4.255,4.255,0,0,1-4.25-4.25V50.1a4.255,4.255,0,0,1,4.25-4.25h103a4.255,4.255,0,0,1,4.25,4.25Z"></path>
+                                <path d="M40.333,54.346H15.5a1.75,1.75,0,0,0,0,3.5H40.333a1.75,1.75,0,0,0,0-3.5Z"></path>
+                                <path d="M79,89.25H49a1.75,1.75,0,0,0,0,3.5H79a1.75,1.75,0,0,0,0-3.5Z"></path>
+                                <path d="M79,98.25H49a1.75,1.75,0,0,0,0,3.5H79a1.75,1.75,0,0,0,0-3.5Z"></path>
+                                <path d="M79,107.25H49a1.75,1.75,0,0,0,0,3.5H79a1.75,1.75,0,0,0,0-3.5Z"></path>
+                                <path d="M109.5,51.346a4.75,4.75,0,1,0,4.75,4.75A4.756,4.756,0,0,0,109.5,51.346Zm0,6a1.25,1.25,0,1,1,1.25-1.25A1.251,1.251,0,0,1,109.5,57.346Z"></path>
+                                <path d="M97.625,51.346a4.75,4.75,0,1,0,4.75,4.75A4.756,4.756,0,0,0,97.625,51.346Zm0,6a1.25,1.25,0,1,1,1.25-1.25A1.251,1.251,0,0,1,97.625,57.346Z"></path>
+                                <path d="M85.75,51.346A4.75,4.75,0,1,0,90.5,56.1,4.756,4.756,0,0,0,85.75,51.346Zm0,6A1.25,1.25,0,1,1,87,56.1,1.251,1.251,0,0,1,85.75,57.346Z"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3>Print Design</h3>
+                    <p>Conception de supports imprimés : flyers, brochures, affiches, packaging et bien plus encore.</p>
+                    <a href="#contact" class="btn-service">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Témoignages -->
+    <section id="testimonials" class="testimonials">
+        <div class="container-full">
+            <div class="section-header">
+                <h2>Vos avis</h2>
+                <div class="section-decoration"></div>
+                <p>Ce que mes clients disent de mon travail</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonials-track" id="testimonials-track">
+                    <!-- Les témoignages seront ajoutés ici -->
+                    <div class="testimonial-item">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Un travail exceptionnel ! Elle a parfaitement capturé l'essence de notre marque et créé une identité visuelle qui nous représente vraiment."</p>
+                        <p class="testimonial-author">Marie Dubois</p>
+                        <p class="testimonial-role">CEO, Boutique Élégance</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Professionnelle, créative et à l'écoute. Le résultat a dépassé toutes nos attentes. Je recommande vivement !"</p>
+                        <p class="testimonial-author">Thomas Laurent</p>
+                        <p class="testimonial-role">Fondateur, StartUp Innovante</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Une graphiste talentueuse qui comprend vraiment les besoins de ses clients. Nos supports de communication n'ont jamais été aussi beaux !"</p>
+                        <p class="testimonial-author">Sophie Martin</p>
+                        <p class="testimonial-role">Directrice Marketing, Agence Créative</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Collaboration fluide et résultat magnifique. Son sens du détail et sa créativité font toute la différence."</p>
+                        <p class="testimonial-author">Pierre Rousseau</p>
+                        <p class="testimonial-role">Gérant, Restaurant Le Gourmet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contactez-moi</h2>
+                <div class="section-decoration"></div>
+                <p>Discutons de votre prochain projet</p>
+            </div>
+            <div class="contact-content">
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" required>
+                        <label for="name">Nom</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" id="message" rows="5" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <span>Envoyer</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <a href="mailto:contact@studio-op.com">contact@studio-op.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <div class="contact-text">
+                                <h4>Instagram</h4>
+                                <a href="https://instagram.com/studio.op" target="_blank">@studio.op</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://behance.net" target="_blank" class="social-link">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bande défilante -->
+    <div class="scrolling-banner">
+        <div class="scrolling-banner-track">
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+            <span>Studio OP</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="asset/Logo.png" alt="Studio OP Logo">
+                </div>
+                <p>&copy; 2025 Studio OP. Tous droits réservés.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://behance.net" target="_blank"><i class="fab fa-behance"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" onclick="resetLoader(); return false;" title="Réinitialiser le loader" style="opacity: 0.3; font-size: 12px;">⟲</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="projects-loader.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

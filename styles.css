@@ -25,7 +25,8 @@ html {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-dark);
+    color: #ffffff;
+    background-color: #000000;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -46,19 +47,57 @@ body {
    ======================================== */
 .header {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(30px) saturate(200%);
-    -webkit-backdrop-filter: blur(30px) saturate(200%);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 4rem);
+    max-width: 1400px;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.header::before,
+.header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.header::before {
+    z-index: 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    filter: saturate(120%) brightness(1.15);
+}
+
+.header::after {
+    z-index: 1;
+    background: rgba(10, 10, 10, 0.25);
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.75),
+                inset 0 0 5px rgba(255, 255, 255, 0.75);
+}
+
+.header:hover {
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.header:hover::before {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.header:hover::after {
+    background: rgba(15, 15, 15, 0.35);
 }
 
 .header .container {
+    position: relative;
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,7 +128,7 @@ body {
 
 .nav a {
     text-decoration: none;
-    color: var(--text-dark);
+    color: #ffffff;
     font-weight: 500;
     font-size: 0.95rem;
     position: relative;
@@ -125,7 +164,7 @@ body {
 .menu-toggle span {
     width: 25px;
     height: 3px;
-    background: var(--text-dark);
+    background: #ffffff;
     transition: var(--transition);
 }
 
@@ -216,7 +255,7 @@ body {
    ======================================== */
 .about {
     padding: 6rem 0;
-    background: var(--secondary-color);
+    background: #000000;
 }
 
 .about-content {
@@ -251,7 +290,7 @@ body {
 .about-text h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: #ffffff;
 }
 
 .section-decoration {
@@ -270,7 +309,7 @@ body {
 
 .about-text p {
     margin-bottom: 1rem;
-    color: var(--text-light);
+    color: #cccccc;
     line-height: 1.8;
 }
 
@@ -310,7 +349,7 @@ body {
    ======================================== */
 .projects {
     padding: 6rem 0;
-    background: var(--bg-light);
+    background: #000000;
 }
 
 .section-header {
@@ -321,7 +360,7 @@ body {
 .section-header h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: #ffffff;
 }
 
 .section-header .section-decoration {
@@ -330,7 +369,7 @@ body {
 
 .section-header p {
     font-size: 1.1rem;
-    color: var(--text-light);
+    color: #cccccc;
 }
 
 .projects-grid {
@@ -433,7 +472,7 @@ body {
    ======================================== */
 .services {
     padding: 6rem 0;
-    background: var(--secondary-color);
+    background: #000000;
 }
 
 .services-grid {
@@ -445,9 +484,9 @@ body {
 .service-item {
     text-align: center;
     padding: 3rem 2rem;
-    background: var(--bg-light);
+    background: #1a1a1a;
     border-radius: 10px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #333333;
     transition: var(--transition);
     opacity: 0;
     transform: translateY(50px);
@@ -463,7 +502,7 @@ body {
 
 .service-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 50px rgba(158, 45, 8, 0.3);
     border-color: var(--accent-color);
 }
 
@@ -497,11 +536,11 @@ body {
 .service-item h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: #ffffff;
 }
 
 .service-item p {
-    color: var(--text-light);
+    color: #cccccc;
     margin-bottom: 1.5rem;
     line-height: 1.7;
 }
@@ -509,8 +548,8 @@ body {
 .btn-service {
     display: inline-block;
     padding: 0.7rem 1.8rem;
-    background: var(--primary-color);
-    color: var(--secondary-color);
+    background: #ffffff;
+    color: #000000;
     text-decoration: none;
     border-radius: 25px;
     transition: var(--transition);
@@ -591,7 +630,7 @@ body {
    ======================================== */
 .contact {
     padding: 6rem 0;
-    background: var(--bg-light);
+    background: #000000;
 }
 
 .contact-content {
@@ -615,12 +654,13 @@ body {
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #333333;
     border-radius: 8px;
     font-size: 1rem;
     font-family: inherit;
     transition: var(--transition);
-    background: var(--secondary-color);
+    background: #1a1a1a;
+    color: #ffffff;
 }
 
 .form-group input:focus,
@@ -633,7 +673,7 @@ body {
     position: absolute;
     left: 1rem;
     top: 1rem;
-    color: var(--text-light);
+    color: #999999;
     transition: var(--transition);
     pointer-events: none;
 }
@@ -645,7 +685,7 @@ body {
     top: -0.8rem;
     left: 0.8rem;
     font-size: 0.85rem;
-    background: var(--bg-light);
+    background: #000000;
     padding: 0 0.5rem;
     color: var(--accent-color);
 }
@@ -657,8 +697,8 @@ body {
 
 .btn-submit {
     padding: 1rem 2rem;
-    background: var(--primary-color);
-    color: var(--secondary-color);
+    background: #ffffff;
+    color: #000000;
     border: none;
     border-radius: 50px;
     font-size: 1rem;
@@ -720,7 +760,7 @@ body {
 
 .contact-text h4 {
     font-size: 0.9rem;
-    color: var(--text-light);
+    color: #cccccc;
     margin-bottom: 0.3rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -728,7 +768,7 @@ body {
 }
 
 .contact-text a {
-    color: var(--text-dark);
+    color: #ffffff;
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 600;
@@ -748,8 +788,8 @@ body {
 .social-link {
     width: 60px;
     height: 60px;
-    background: var(--primary-color);
-    color: var(--secondary-color);
+    background: #ffffff;
+    color: #000000;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -858,8 +898,8 @@ body {
         right: -100%;
         width: 300px;
         height: 100vh;
-        background: var(--secondary-color);
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        background: #000000;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
         padding: 6rem 2rem;
         transition: var(--transition);
     }
@@ -952,4 +992,6 @@ body {
         min-width: 250px;
     }
 }
+
+
 
