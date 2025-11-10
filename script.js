@@ -4,9 +4,8 @@
 let nav = null;
 
 document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
+    const menuToggle = document.querySelector('#menu-toggle');
     nav = document.querySelector('.nav');
-    let overlay = null;
 
     if (!menuToggle || !nav) {
         console.log('Menu elements not found');
@@ -15,38 +14,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function openMenu() {
         nav.classList.add('active');
-        menuToggle.classList.add('active');
-        
-        // Créer overlay
-        const header = document.querySelector('.header');
-        const headerRect = header.getBoundingClientRect();
-        overlay = document.createElement('div');
-        overlay.className = 'nav-overlay';
-        overlay.style.cssText = `position: fixed; top: ${headerRect.bottom}px; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 4400; pointer-events: auto;`;
-        document.body.appendChild(overlay);
-        
-        // Fermer au clic sur overlay
-        overlay.addEventListener('click', closeMenu);
+        menuToggle.checked = true;
     }
 
     function closeMenu() {
-        // Supprimer overlay immédiatement
-        if (overlay && overlay.parentNode) {
-            document.body.removeChild(overlay);
-            overlay = null;
-        }
-        
         nav.classList.remove('active');
-        menuToggle.classList.remove('active');
+        menuToggle.checked = false;
     }
 
     // Bouton burger
-    menuToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (nav.classList.contains('active')) {
-            closeMenu();
-        } else {
+    menuToggle.addEventListener('change', function(e) {
+        if (e.target.checked) {
             openMenu();
+        } else {
+            closeMenu();
         }
     });
 
@@ -145,58 +126,71 @@ serviceItems.forEach(item => {
 // ========================================
 const testimonialsTrack = document.getElementById('testimonials-track');
 let isPaused = false;
+let animationId = null;
+let scrollPosition = 0;
+let originalItems = [];
 
-if (testimonialsTrack) {
-    // Dupliquer le contenu pour l'effet de boucle infinie
-    const testimonialItems = Array.from(testimonialsTrack.children);
+function initTestimonialsScroll() {
+    if (!testimonialsTrack) return;
     
-    // Dupliquer tous les témoignages plusieurs fois pour un scroll fluide
-    testimonialItems.forEach(item => {
+    // Arrêter l'animation existante
+    if (animationId) {
+        cancelAnimationFrame(animationId);
+    }
+    
+    // Sauvegarder les éléments originaux et dupliquer pour l'effet de boucle
+    originalItems = Array.from(testimonialsTrack.children);
+    
+    // Dupliquer les témoignages pour un scroll fluide
+    originalItems.forEach(item => {
         const clone1 = item.cloneNode(true);
         const clone2 = item.cloneNode(true);
         testimonialsTrack.appendChild(clone1);
         testimonialsTrack.appendChild(clone2);
     });
     
-    let scrollPosition = 0;
-    let animationId;
+    scrollPosition = 0;
+    startScrollAnimation();
+}
+
+function startScrollAnimation() {
+    // Calculer la largeur une seule fois pour éviter les recalculs
+    const firstItemWidth = originalItems[0]?.offsetWidth || 400;
+    const gap = 32;
+    const totalWidth = originalItems.length * (firstItemWidth + gap);
     
-    // Fonction d'animation fluide
     function scrollTestimonials() {
         if (!isPaused) {
-            scrollPosition -= 1; // Vitesse de défilement (ajustable)
+            scrollPosition -= 1; // Vitesse fixe de 1px par frame
             
-            // Calculer la largeur d'un set complet de témoignages
-            const firstItemWidth = testimonialItems[0].offsetWidth;
-            const gap = 32; // 2rem = 32px
-            const totalWidth = testimonialItems.length * (firstItemWidth + gap);
-            
-            // Reset la position quand on a scrollé un set complet
+            // Reset quand on a scrollé un set complet
             if (Math.abs(scrollPosition) >= totalWidth) {
                 scrollPosition = 0;
             }
             
+            // Utiliser translateX simple pour éviter les conflits
             testimonialsTrack.style.transform = `translateX(${scrollPosition}px)`;
         }
         
         animationId = requestAnimationFrame(scrollTestimonials);
     }
     
-    // Démarrer l'animation
     scrollTestimonials();
+}
+
+// Fonction pour réinitialiser l'animation
+window.resetTestimonialsScroll = initTestimonialsScroll;
+
+if (testimonialsTrack) {
+    initTestimonialsScroll();
     
     // Pause au survol
-    testimonialsTrack.addEventListener('mouseenter', () => {
-        isPaused = true;
-    });
-    
-    testimonialsTrack.addEventListener('mouseleave', () => {
-        isPaused = false;
-    });
+    testimonialsTrack.addEventListener('mouseenter', () => isPaused = true);
+    testimonialsTrack.addEventListener('mouseleave', () => isPaused = false);
     
     // Réinitialiser isPaused quand le menu se ferme
-    document.addEventListener('click', function() {
-        setTimeout(function() {
+    document.addEventListener('click', () => {
+        setTimeout(() => {
             if (!nav || !nav.classList.contains('active')) {
                 isPaused = false;
             }
@@ -268,6 +262,18 @@ async function loadProjects() {
 }
 
 // ========================================
+// Chargement des témoignages depuis Decap CMS
+// ========================================
+async function loadTestimonials() {
+    // Utiliser le loader de testimonials-loader.js si disponible
+    if (typeof initTestimonials === 'function') {
+        await initTestimonials();
+    } else {
+        console.log('Mode développement - témoignages statiques affichés');
+    }
+}
+
+// ========================================
 // Parallax Effect sur la section héros
 // ========================================
 window.addEventListener('scroll', () => {
@@ -305,6 +311,9 @@ window.addEventListener('scroll', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Charger les projets
     loadProjects();
+    
+    // Charger les témoignages
+    loadTestimonials();
     
     // Animation d'entrée de la page
     document.body.style.opacity = '0';
